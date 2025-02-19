@@ -1,5 +1,5 @@
 import random
-from src.hand_detection import detect_hand_signal
+from src.handDetection import detect_hand_signal
 
 def play_first_innings(batting_team):
     print(f"\n{batting_team} is batting first!")

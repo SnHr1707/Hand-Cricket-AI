@@ -1,5 +1,5 @@
 import random
-from src.hand_detection import detect_hand_signal
+from src.handDetection import detect_hand_signal
 
 def play_second_innings(batting_team, target):
     print(f"\n{batting_team} is batting second. Target: {target + 1}")
@@ -20,7 +20,7 @@ def play_second_innings(batting_team, target):
 
         score += user_runs if batting_team == "User" else ai_runs
         print(f"Total runs: {score}")
-        print(f"Target: {target}")
+        print(f"Target: {target+1}")
 
     if score > target:
         print(f"{batting_team} wins!")

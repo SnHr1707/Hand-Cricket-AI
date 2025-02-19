@@ -1,5 +1,5 @@
 import random
-from src.hand_detection import detect_hand_signal
+from src.handDetection import detect_hand_signal
 
 def decide_bat_or_bowl(toss_winner):
     if toss_winner == "User":

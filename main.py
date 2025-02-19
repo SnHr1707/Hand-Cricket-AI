@@ -1,7 +1,7 @@
-from src.odd_even import odd_even_toss
-from src.bat_or_bowl import decide_bat_or_bowl
-from src.first_innings import play_first_innings
-from src.second_innings import play_second_innings
+from src.oddEven import odd_even_toss
+from src.batOrBowl import decide_bat_or_bowl
+from src.firstInnings import play_first_innings
+from src.secondInnings import play_second_innings
 import os
 import logging
 import sys

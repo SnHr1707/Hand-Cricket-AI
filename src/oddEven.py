@@ -1,14 +1,18 @@
 import random
-from src.hand_detection import detect_hand_signal
+from src.handDetection import detect_hand_signal
 
 def odd_even_toss():
     print("Choose Odd or Even by showing 1 for Odd, 2 for Even:")
     detected_fingers = None  # Ensure it waits for a valid input
 
-    while detected_fingers is None or detected_fingers == 0:
-        detected_fingers = detect_hand_signal()  
-
-    print(f"You chose: {'Odd' if detected_fingers == 1 else 'Even'}")
+    while (True):
+        detected_fingers = detect_hand_signal()
+        if detected_fingers == 1:
+            print(f"You Chose: Odd")
+            break
+        elif detected_fingers == 2:
+            print(f"You Chose: Even")
+            break
     
     user_runs = detect_hand_signal()
     ai_runs = random.randint(1, 6)
