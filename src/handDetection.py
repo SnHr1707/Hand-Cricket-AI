@@ -73,7 +73,6 @@ def detect_hand_signal():
         if finger_count is not None:
             cv2.putText(frame, f"Fingers: {finger_count}", (50, 50), 
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
-            print(f"Right hand detected fingers: {finger_count}")
             return finger_count
 
         # Show the live video feed
