@@ -22,8 +22,11 @@ def count_fingers(hand_landmarks):
             count += 1
     return count
 
-def get_right_hand_finger_count(hands, frame):
+def get_right_hand_finger_count(hands, cap):
     global last_time
+    ret, frame = cap.read()
+    if not ret:
+        return None
 
     # Convert to RGB for Mediapipe
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -37,7 +40,7 @@ def get_right_hand_finger_count(hands, frame):
             if label == 'Left':  # Only process right hand
                 finger_count = count_fingers(hand_landmarks)
                 
-                # Print detected value every second
+                # Print detected value every 2 seconds
                 current_time = time.time()
                 if current_time - last_time >= 1:
                     last_time = current_time
@@ -55,29 +58,11 @@ def detect_hand_signal():
 
     # Define Hand Detection Model
     hands = mp_hands.Hands(min_detection_confidence=0.7, min_tracking_confidence=0.7)
-    
     while cap.isOpened():
-        ret, frame = cap.read()
-        if not ret:
-            continue
-        
-        finger_count = get_right_hand_finger_count(hands, frame)
-        
-        # Draw hand landmarks if detected
-        hand_results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-        if hand_results.multi_hand_landmarks:
-            for hand_landmarks in hand_results.multi_hand_landmarks:
-                mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-
-        # Display detected finger count
+        finger_count = get_right_hand_finger_count(hands, cap)
         if finger_count is not None:
-            cv2.putText(frame, f"Fingers: {finger_count}", (50, 50), 
-                        cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
             print(f"Right hand detected fingers: {finger_count}")
             return finger_count
-
-        # Show the live video feed
-        cv2.imshow("Hand Detection", frame)
 
         # Press 'q' to exit
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -86,3 +71,11 @@ def detect_hand_signal():
     # Release resources
     cap.release()
     cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    while(True):
+        fingers = detect_hand_signal()
+        print(fingers)
+        if fingers==3:
+            break
+        

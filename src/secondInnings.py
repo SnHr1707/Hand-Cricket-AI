@@ -1,28 +1,25 @@
 import random
 from src.handDetection import detect_hand_signal
 
-def play_second_innings(batting_team, target):
+def play_second_innings(batting_team, target, bowling_team):
     print(f"\n{batting_team} is batting second. Target: {target + 1}")
 
     score = 0
     while score <= target:
-        user_runs = detect_hand_signal() if batting_team == "User" else random.randint(1, 6)
-        ai_runs = random.randint(1, 6) if batting_team == "User" else detect_hand_signal()
+        runs_scored = detect_hand_signal() if batting_team == "User" else random.randint(1, 6)
+        bowled = random.randint(1, 6) if batting_team == "User" else detect_hand_signal()
 
-        if batting_team == "User":
-            print(f"{batting_team} played: {user_runs}, AI bowled: {ai_runs}") 
-        else:
-            print(f"{batting_team} played: {ai_runs}, User bowled: {user_runs}") 
+        print(f"{batting_team} played: {runs_scored}, {bowling_team} bowled: {bowled}")
 
-        if user_runs == ai_runs:
+        if runs_scored == bowled:
             print(f"{batting_team} is out! Final score: {score}")
             break
 
-        score += user_runs if batting_team == "User" else ai_runs
+        score += runs_scored
         print(f"Total runs: {score}")
         print(f"Target: {target+1}")
 
     if score > target:
         print(f"{batting_team} wins!")
     else:
-        print("Opponent wins!")
+        print(f"{bowling_team} wins!")

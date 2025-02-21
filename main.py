@@ -20,11 +20,15 @@ def main():
     print("\n🏏 Welcome to Hand Cricket! 🏏")
     
     toss_winner = odd_even_toss()
-    batting_first = toss_winner if decide_bat_or_bowl(toss_winner) == "User" else "AI"
+    batting_first=""
+    if toss_winner=="User":
+        batting_first = "User" if toss_winner=="Batting" else "AI"
+    else:
+        batting_first = "AI" if toss_winner=="Batting" else "User"
     bowling_first = "User" if batting_first == "AI" else "AI"
 
-    target = play_first_innings(batting_first)
-    play_second_innings(bowling_first, target)
+    target = play_first_innings(batting_first, bowling_first)
+    play_second_innings(bowling_first, target, batting_first)
 
 if __name__ == "__main__":
     main()

@@ -10,8 +10,7 @@ def decide_bat_or_bowl(toss_winner):
             detected_fingers = detect_hand_signal()
         
         print(f"You chose to: {'Bat' if detected_fingers == 1 else 'Bowl'}")
-
-
+        
         return "Batting" if detected_fingers == 1 else "Bowling"
     
     else:
