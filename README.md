@@ -1,4 +1,4 @@
-Hand Cricket game made using AI  
+Hand Cricket game made using AI(Only works for right hand for now)  
 
 # Run this command to install the libraries and set up environment
 python -m venv venv  
