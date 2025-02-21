@@ -1,21 +1,20 @@
 Hand Cricket game made using AI(Only works for right hand for now)  
 
-# Run this command to install the libraries and set up environment
-python -m venv venv  
+# Run these commands to install the libraries and set up environment
+1. python -m venv venv  
 
-If you are using git bash:  
+(Only one from the below 4)  
+2a. If you are using git bash:  
 source venv/Scripts/activate  
 
-If you are using powershell:  
+2b. If you are using powershell:  
 venv\Scripts\Activate 
 
-If you are using command prompt:  
+2c. If you are using command prompt:  
 venv\Scripts\activate 
 
-If you are on Linux/MacOS:  
+2d. If you are on Linux/MacOS:  
 source venv/bin/activate
 
-Then:
-pip install -r requirements.txt
-pip install opencv-python mediapipe==0.10.13
-python main.py
+3. pip install -r requirements.txt
+4. python main.py
