@@ -22,9 +22,9 @@ def main():
     toss_winner = odd_even_toss()
     batting_first=""
     if toss_winner=="User":
-        batting_first = "User" if toss_winner=="Batting" else "AI"
+        batting_first = "User" if decide_bat_or_bowl(toss_winner)=="Batting" else "AI"
     else:
-        batting_first = "AI" if toss_winner=="Batting" else "User"
+        batting_first = "AI" if decide_bat_or_bowl(toss_winner)=="Batting" else "User"
     bowling_first = "User" if batting_first == "AI" else "AI"
 
     target = play_first_innings(batting_first, bowling_first)
